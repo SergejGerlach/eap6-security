@@ -3,6 +3,7 @@ package de.sergejgerlach.security.servlet.boundary;
 import de.sergejgerlach.security.servlet.control.HtmlWriter;
 import de.sergejgerlach.security.servlet.control.LoggerHelper;
 
+import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,8 @@ import java.util.logging.Logger;
  *
  */
 @WebServlet("/secured")
-@ServletSecurity(httpMethodConstraints = { @HttpMethodConstraint(value = "GET", rolesAllowed = { "SuperUser" }) })
+// @ServletSecurity(httpMethodConstraints = { @HttpMethodConstraint(value = "GET", rolesAllowed = { "SuperUser" }) })
+@ServletSecurity(@HttpConstraint(rolesAllowed = "SuperUser"))
 public class SecuredServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(SecuredServlet.class.getName());
