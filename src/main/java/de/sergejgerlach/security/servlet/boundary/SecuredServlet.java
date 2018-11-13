@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  *
  */
 @WebServlet("/secured")
-// @ServletSecurity(httpMethodConstraints = { @HttpMethodConstraint(value = "GET", rolesAllowed = { "SuperUser" }) })
-@ServletSecurity(@HttpConstraint(rolesAllowed = "SuperUser"))
+@ServletSecurity(httpMethodConstraints = { @HttpMethodConstraint(value = "GET", rolesAllowed = { "SuperUser" }) })
+// @ServletSecurity(@HttpConstraint(rolesAllowed = "SuperUser"))
 public class SecuredServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(SecuredServlet.class.getName());
