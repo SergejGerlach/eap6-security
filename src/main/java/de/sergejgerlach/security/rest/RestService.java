@@ -2,6 +2,8 @@
  */
 package de.sergejgerlach.security.rest;
 
+import org.jboss.ejb3.annotation.SecurityDomain;
+
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -14,7 +16,9 @@ import java.util.logging.Logger;
 
 @Path("")
 @Produces(MediaType.APPLICATION_JSON)
-@PermitAll
+@SecurityDomain("other")
+// @PermitAll
+@RolesAllowed("SuperUser")
 @Stateless
 public class RestService {
 
@@ -22,6 +26,7 @@ public class RestService {
 
     @GET
     @Path("/info")
+    @PermitAll
     public String info() {
         log.config("Entry RestService : info");
         return "Hello from REST service shared method 'info'!";
